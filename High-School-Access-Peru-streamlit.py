@@ -248,16 +248,14 @@ def create_region_map(region_name, primary_schools, secondary_schools):
 
     for _, row in min_schools.iterrows():
         Circle(location=(row.geometry.y, row.geometry.x), radius=5000, color='red', fill=True, fill_opacity=0.2).add_to(fmap)
-        (Marker(location=(row.geometry.y, row.geometry.x), icon=Icon(color='red', icon='times', prefix='fa'),
-               popup=f"{row['Nombre de SS.EE.']} (0 high schools)")
-         ).add_to(fmap)
+        Marker(location=(row.geometry.y, row.geometry.x), icon=Icon(color='red', icon='times', prefix='fa'),
+       popup=f"{row['Nombre de SS.EE.']} (0 high schools)").add_to(fmap)
 
 
     Circle(location=(max_school.geometry.y, max_school.geometry.x), radius=5000, color='green', fill=True,
            fill_opacity=0.2).add_to(fmap)
     Marker(location=(max_school.geometry.y, max_school.geometry.x), icon=Icon(color='green', icon='star', prefix='fa'),
-           popup=f"{max_school['Nombre de SS.EE.']}
-({int(max_school['highschool_count'])} high schools)").add_to(fmap)
+           popup=(f"{max_school['Nombre de SS.EE.']}\n({int(max_school['highschool_count'])} high schools)")).add_to(fmap)
 
     max_buffer = max_school['buffer_5km']
     max_buffer_wgs = gpd.GeoSeries([max_buffer], crs='EPSG:32718').to_crs('EPSG:4326')[0]
