@@ -1,9 +1,7 @@
 streamlit
 pandas
-openpyxl
-folium
 geopandas
+folium
+openpyxl
 shapely
-fiona
-pyproj
-rtree
+branca
