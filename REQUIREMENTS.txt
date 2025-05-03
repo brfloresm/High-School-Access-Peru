@@ -4,3 +4,6 @@ geopandas
 openpyxl
 folium
 shapely
+pyproj
+fiona
+rtree
